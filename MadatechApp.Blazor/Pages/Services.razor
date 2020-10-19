@@ -1,0 +1,43 @@
+﻿@page "/services"
+@inject HttpClient Http
+
+<div class="page">
+    <h3>Services</h3>
+    <h5>Here you can find the catalog of our services!</h5>
+    <div class="gallery">
+        <ul>
+            @if (services == null)
+            {
+                <p><em>Loading...</em></p>
+            }
+            else
+            {
+                foreach (var service in services)
+                {
+                    <li>
+
+                        <ProductItem Src="@service.ImgUrl"
+                                     Title="@service.Title" />
+
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>
+
+@code {
+    private List<Service> services;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Products.ProductService ps = await Http.GetFromJsonAsync<Products.ProductService>("sample-data/products.json");
+        services = ps.Services;
+    }
+
+    public class Service
+    {
+        public string Title { get; set; }
+        public string ImgUrl { get; set; }
+    }
+}

@@ -1,0 +1,11 @@
+﻿<div class="product-item">
+    <img class="product-icon" src="@Src" alt="" />
+    <h4 class="product-title">@Title</h4>
+</div>
+
+@code {
+    [Parameter]
+    public string Src { get; set; }
+    [Parameter]
+    public string Title { get; set; }
+}

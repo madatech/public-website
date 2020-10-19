@@ -1,0 +1,11 @@
+﻿<div class="automation-item">
+    <img src="@ImgUrl" />
+    <h4>@Title</h4>
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+    [Parameter]
+    public string ImgUrl { get; set; }
+}
